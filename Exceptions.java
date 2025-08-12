@@ -6,6 +6,14 @@ class MyException extends Exception         // we can create our own exception b
     }
 }
 
+class Exception1{
+    public void show() throws ClassNotFoundException    // if we are not handling exception with try/catch we can use throws to pass the responsiblity to main 
+    {
+        Class.forName("Demo");
+    }
+}
+
+
 public class Exceptions {
     public static void main(String s[])
     {
@@ -38,7 +46,16 @@ public class Exceptions {
         {
             System.out.println("Something went wrong : " + e);
         }
-
-        System.out.println("Printing after the exception block");
+        finally{
+        System.out.println("Printing finally the exception block");
+        // used to close the resources like bufferreader.close()
+        }
+        Exception1 obj = new Exception1();
+        try{
+        obj.show();// here we need to handle the exception
+        }
+        catch(ClassNotFoundException e){
+            System.out.println("Class not found....");
+        }
     }
 }
